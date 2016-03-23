@@ -1,0 +1,3 @@
+[submodule "vendor/nim-extensions"]
+	path = vendor/nim-extensions
+	url = https://github.com/jyapayne/nim-extensions
