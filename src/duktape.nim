@@ -40,7 +40,14 @@ class Duktape* of RootObj:
     var file = self.to_string(0)
     try:
       var fs = newFileStream($file, fmRead)
-      self.eval(readAll(fs))
+      var data = readAll(fs)
+      self.eval("""
+        (function() {
+            var exports = {};
+            """ & data & """ ;
+            return exports;
+        })();
+      """)
       fs.close()
     except:
       let
